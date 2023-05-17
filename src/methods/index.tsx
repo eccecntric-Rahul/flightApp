@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { FETCHDATA_FAILURE, FETCHDATA_SUCCESS, POSTDATA_FAILURE, POSTDATA_SUCCESS } from '../Action';
 
 const SERVER_URL= "http://localhost:8000/api/"
 export const commonGet = async (url:string,params:Object) => {

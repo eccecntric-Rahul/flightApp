@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Home.css';
 import { commonGet } from '../../methods';
 import { Autocomplete, TextField, Button, Paper } from '@mui/material';
@@ -53,7 +53,7 @@ const Home = () => {
     };
   }, [destinationInput]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async () => {
     if(origin && destination && date){
       const response = await commonGet('/flight', { from:origin.iataCode,to:destination.iataCode,date }) as {status:number,data:any};
       if (response.status===200) {
@@ -74,8 +74,8 @@ const Home = () => {
           inputValue={originInput}
           value={origin}
           freeSolo
-          onInputChange={(event, newValue) => setOriginInput(newValue)}
-          onChange={(event, newValue) => setOrigin(newValue)}
+          onInputChange={(event:React.SyntheticEvent<Element|Event>, newValue) =>{event; return  setOriginInput(newValue)}}
+          onChange={(event:React.SyntheticEvent<Element|Event>, newValue) =>{event; return  setOrigin(newValue)}}
           renderInput={(params) => (
             <TextField {...params} label="Select origin city" variant="outlined" />
           )}
@@ -86,8 +86,8 @@ const Home = () => {
           inputValue={destinationInput}
           freeSolo
           value={destination}
-          onChange={(event, newValue) => setDestination(newValue)}
-          onInputChange={(event, newValue) => setDestinationInput(newValue)}
+          onChange={(event:React.SyntheticEvent<Element|Event>, newValue) => {event; return setDestination(newValue)}}
+          onInputChange={(event:React.SyntheticEvent<Element|Event>, newValue) => {event; return setDestinationInput(newValue)}}
           renderInput={(params) => (
             <TextField {...params} label="Select destination city" variant="outlined" />
           )}
