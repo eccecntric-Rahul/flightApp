@@ -1,0 +1,32 @@
+.signup-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signup-paper {
+    padding: 5rem!important;
+    background-color: #F6F1F1;
+  }
+  
+  .signup-title {
+    margin-bottom: 2rem!important;
+    color: #146C94;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .signup-button {
+    background-color: #19A7CE;
+    color: #fff;
+  }
+  
+  .signup-button:hover {
+    background-color: #146C94;
+  }
+  

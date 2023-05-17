@@ -1,0 +1,130 @@
+.footer{
+    height: 35vh;
+    width: 100%;
+    color:var(--grey);
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    padding: 8px;
+    position: relative;
+    font-size: large;
+}
+
+.footer_content_container{
+    width: 60vw;
+    height: 35vh;
+    display: flex;
+}
+
+.footer_row{
+    width: 20vw;
+    height: 35vh;
+    display: inline;
+}
+
+.footer_icon{
+    color:var(--white);
+    font-size:1.5rem;
+    text-decoration: none;
+}
+
+.footer_icon_right_margin{
+    margin-right: 1.8rem;
+}
+
+#heart_icon{
+    color:var(--red);
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: larger;
+}
+
+#heart_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 2.2rem;
+    color: var(--white);
+}
+
+.icon_container{
+    margin-top: 6vh;
+    margin-bottom: 0;
+    min-height: 4vh;
+}
+
+.footer_text_container{
+    margin-top: 0.3rem;
+    margin-bottom: 2vh;
+    font-size: 0.9rem;
+}
+
+.footer_text_container:hover{
+    text-decoration: underline;
+}
+
+.footer_text_link{
+    text-decoration: none;
+    color:var(--grey);
+}
+
+#copyright{
+    margin-top:2vh;
+    position: absolute;
+    bottom: 1rem;
+    color: var(--white);
+    font-size: small;
+}
+
+@media screen and (max-width: 992px) {
+    .footer{
+        height: 50vh;
+    }
+    .footer_content_container{
+        width: 90vw;
+        height: 50vh;
+    }
+    
+    .footer_row{
+        width: 30vw;
+    }
+    .footer_icon{
+        font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .footer{
+        height: 50vh;
+        width: 100%;
+        color:var(--grey);
+        display: flex;
+        justify-content: center;
+        margin-top: 10vh;
+        padding: 8px;
+        position: relative;
+        font-size: large;
+    }
+    
+    .footer_content_container{
+        width: 100vw;
+        padding-left: 1rem;
+        height: 50vh;
+    }
+    .footer_row{
+        width: 33vw;
+    }
+    .footer_icon{
+        font-size: 1.2rem;
+        margin-right: 0.2rem;
+    }
+    .row_3{
+        width: 31vw;
+        padding-right: 2vw;
+    }
+  }
+
+
+
+  

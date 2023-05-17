@@ -1,0 +1,35 @@
+.homepage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 2rem;
+  }
+  
+  .form-container {
+    padding: 4rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 20rem;
+  }
+  
+  .form-container .MuiAutocomplete-root {
+    margin-bottom: 10px;
+  }
+  
+  .form-container .MuiTextField-root {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .date-input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .submit-button {
+    display: block;
+    margin-top: 10px;
+  }
+  

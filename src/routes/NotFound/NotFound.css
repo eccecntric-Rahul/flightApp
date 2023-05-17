@@ -1,0 +1,41 @@
+.not_found{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: url('../../Assets/lostYourWay.jpeg') no-repeat center center ;
+    flex-direction: column;
+    color:white;
+    padding-top: 35vh;
+}
+
+.not_found_heading{
+    font-size: 3rem;
+}
+
+.not_found_text{
+    font-size: 1.2rem;
+}
+
+.not_found_button{
+    background-color: white;
+    padding:0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    color:#000;
+    font-size: 1.2rem;
+    border: #000 solid 1px;
+    margin-top: 1rem;
+    font-weight: 900!important;
+    transition: all ease-in-out 450ms;
+}
+
+.not_found_button:hover{
+    opacity: 0.7;
+}
+
+.not_found_error_text{
+    font-size: 1.7rem;
+    font-weight: 200;
+    border-left: var(--red) solid 2px;
+    padding-left: 1rem;
+    margin-top:4rem;
+}

@@ -1,0 +1,28 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem 1rem;
+    background-color: #146C94; 
+    width: 100%;
+    position: fixed;
+    top:0;
+    margin:0;
+    min-height: 2.5rem;
+  }
+  
+  .navbar-heading {
+    color:#F6F1F1;
+  }
+  
+  .logout-button {
+    background-color: #19A7CE;
+    color: #fff;
+    margin-right: 3rem!important;
+  }
+  
+  .logout-button:hover {
+    background-color: #146C94;
+  }
+  
+  
