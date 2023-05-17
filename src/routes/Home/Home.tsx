@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Home.css';
 import { commonGet } from '../../methods';
-import { Autocomplete, TextField, Button, Paper } from '@mui/material';
+import { Autocomplete, TextField, Button, Paper, Typography } from '@mui/material';
 import { debounce } from 'lodash';
 import { toast } from 'react-toastify';
 import FlightTable from '../../components/Table/FlightTable';
@@ -68,6 +68,9 @@ const Home = () => {
   return (
     <div className="homepage-container">
       <Paper elevation={3} className="form-container">
+      <Typography variant="h4" align="center" className="signup-title">
+            Enter Flight Details
+          </Typography>
         <Autocomplete
           options={originCities}
           getOptionLabel={(city) => city?.name}
