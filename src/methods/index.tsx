@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_URL= "http://localhost:8000/api/"
+const SERVER_URL= "https://flightappserver.onrender.com/api";
 export const commonGet = async (url:string,params:Object) => {
     try {
         const resp = await axios.get(SERVER_URL + url,{params:params?params:{}});
