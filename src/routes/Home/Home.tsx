@@ -15,6 +15,7 @@ const Home = () => {
   const [destinationInput, setDestinationInput] = useState('');
   const [date,setDate]=useState<string|undefined>();
   const [flightData,setFlightData]=useState([]);
+  const [loading,setLoading]=useState(false);
   useEffect(() => {
     const fetchOriginCities = debounce(async (searchStr) => {
       try {
@@ -25,7 +26,7 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching origin cities:', error);
       }
-    }, 500);
+    }, 300);
 
     fetchOriginCities(originInput);
 
@@ -44,7 +45,7 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching destination cities:', error);
       }
-    }, 500);
+    }, 300);
 
     fetchDestinationCities(destinationInput);
 
@@ -54,20 +55,35 @@ const Home = () => {
   }, [destinationInput]);
 
   const handleSubmit = async () => {
+    setLoading(true);
     if(origin && destination && date){
-      const response = await commonGet('/flight', { from:origin.iataCode,to:destination.iataCode,date }) as {status:number,data:any};
-      if (response.status===200) {
+      const response = await commonGet('/flight', { from:origin.iataCode,to:destination.iataCode,date }) as {status:number,data:any,response:{status:number,data:any}};
+      if (response.status===200 || (response.status && response.status.toString()[0]==="2")) {
        setFlightData(response.data)
       }
+      else if(response && response.response && response.response.status===400)
+      toast(response?.response?.data?.description?.[0]?.detail,{type:"error"});
+      setLoading(false);
     }else{
       toast("Please fill all the mandatory fields",{type:"error"});
+      setLoading(false);
       return
     }
+  };
+  const handleReset = () => {
+    setOriginCities([]);
+    setDestinationCities([]);
+    setOrigin(null);
+    setDestination(null);
+    setOriginInput('');
+    setDestinationInput('');
+    setDate('');
+    setFlightData([]);
   };
 
   return (
     <div className="homepage-container">
-      <Paper elevation={3} className="form-container">
+      <Paper elevation={3} className={flightData.length?"form-container margin-top":"form-container"}>
       <Typography variant="h4" align="center" className="signup-title">
             Enter Flight Details
           </Typography>
@@ -100,18 +116,32 @@ const Home = () => {
           type="date"
           className="date-input"
           fullWidth
+          value={date}
           onChange={(e)=>setDate(e.target.value)}
         />
-       
+       <div className='button-container'>
+
         <Button
           variant="contained"
           color="primary"
           type="submit"
           onClick={handleSubmit}
           className="submit-button"
+          disabled={loading}
         >
           Submit
         </Button>
+        {flightData.length ? (
+          <Button
+            variant="contained"
+            color={"error"}
+            onClick={handleReset}
+            className="reset-button"
+          >
+            Reset
+          </Button>
+        ) : null}
+       </div>
       </Paper>
      { flightData.length ? <FlightTable  flights={flightData}/>:null}
     </div>

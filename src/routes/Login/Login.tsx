@@ -20,6 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [showPwd,setShowPwd]=useState(true);
   const {setLogin}=useAuth();
+  const [loading,setLoading]=useState(false);
   const initialValues = {
     email: '',
     password: '',
@@ -34,13 +35,17 @@ const Login = () => {
 
   const handleSubmit = async(values:{email:string,password:string}) => {
     try {
+      setLoading(true);
       const resp= await commonGet('login',{...values}) as {status:number,data:any} ;
-      if(resp.status===200){
+      setLoading(false);
+      if (resp.status===200 || (resp.status && resp.status.toString()[0]==="2")) {
         setLogin && setLogin(JSON.stringify(resp.data)as UserType)
         toast("Successfully LoggedIn")
         navigate('/')
       }
     } catch (error) {
+      toast("Error Occurred",{type:"error"});
+      setLoading(false);
       console.log(error)
     }
   };
@@ -90,7 +95,7 @@ const Login = () => {
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <span onClick={togglePasswordVisibility}>
+                        <span className='eye-icon' onClick={togglePasswordVisibility}>
                           {showPwd ? <AiOutlineEye />: <AiOutlineEyeInvisible />}
                         </span>
                       </InputAdornment>
@@ -107,6 +112,7 @@ const Login = () => {
                 type="submit"
                 variant="contained"
                 className="login-button"
+                disabled={loading}
                 fullWidth
               >
                 Log In

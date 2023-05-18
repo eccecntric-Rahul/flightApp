@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     gap: 2rem;
   }
   
@@ -31,5 +31,15 @@
   .submit-button {
     display: block;
     margin-top: 10px;
+  }
+
+  .margin-top{
+    margin-top: 15%;
+  }
+
+  .button-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
   }
   

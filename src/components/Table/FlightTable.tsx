@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-
+import "./FlightTable.css"
 interface Flight {
   flightCode: string;
   price: number;
@@ -12,17 +12,17 @@ interface FlightTableProps {
 
 const FlightTable: React.FC<FlightTableProps> = ({ flights }) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="table-container">
       <Table>
-        <TableHead style={{position:"sticky",top:0,backgroundColor:"#19A7CE"}}>
+        <TableHead className="table-head">
           <TableRow>
-            <TableCell>Flight Code</TableCell>
-            <TableCell>Price</TableCell>
+            <TableCell style={{ fontSize: "1.5rem",fontWeight:'bold' }}>Flight Code</TableCell>
+            <TableCell style={{ fontSize: "1.5rem",fontWeight:'bold' }}>Price(&#8377;)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {flights.map((flight, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} className="table-row">
               <TableCell>{flight.flightCode}</TableCell>
               <TableCell>{flight.price}</TableCell>
             </TableRow>

@@ -1,0 +1,16 @@
+.table-container {
+    height: 40vh; /* Adjust the height as per your requirement */
+    overflow-y: auto;
+    margin-bottom: 20vh;
+  }
+  
+  .table-head {
+    position: sticky;
+    top: 0;
+    background-color: #19A7CE;
+  }
+  
+  .table-row {
+    height: 50px; /* Adjust the row height as per your requirement */
+  }
+  
