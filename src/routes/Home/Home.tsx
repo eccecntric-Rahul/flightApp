@@ -56,19 +56,24 @@ const Home = () => {
 
   const handleSubmit = async () => {
     setLoading(true);
+    try{
     if(origin && destination && date){
       const response = await commonGet('/flight', { from:origin.iataCode,to:destination.iataCode,date }) as {status:number,data:any,response:{status:number,data:any}};
       if (response.status===200 || (response.status && response.status.toString()[0]==="2")) {
        setFlightData(response.data)
       }
       else if(response && response.response && response.response.status===400)
-      toast(response?.response?.data?.description?.[0]?.detail,{type:"error"});
+      toast(response?.response?.data?.description?.[0]?.detail?response?.response?.data?.description?.[0]?.detail:"Unknown Error",{type:"error"});
       setLoading(false);
     }else{
-      toast("Please fill all the mandatory fields",{type:"error"});
+      toast("Please fill all the mandatory fields and if you have only typed city and destination pls select an option",{type:"error"});
       setLoading(false);
       return
     }
+  }catch(err){
+    toast("Error occured",{type:"error"});
+      
+  }
   };
   const handleReset = () => {
     setOriginCities([]);
