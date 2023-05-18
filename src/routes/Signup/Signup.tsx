@@ -40,18 +40,18 @@ const SignupPage = () => {
         'Password must contain at least one uppercase letter, one lowercase letter, one numeric digit, and one special character'
       ),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .oneOf([Yup.ref('password')], 'Passwords must match')
       .required('Required'),
   });
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values:{email:string,password:string,name:string}) => {
     try {
       setLoading(true);
       const formData = new FormData();
       formData.append('email', values.email);
       formData.append('password', values.password);
       formData.append('name', values.name);
-      const resp = await commonPost('signup', formData);
+      const resp = await commonPost('signup', formData) as {status:number};
       setLoading(false);
       if (resp.status === 200 || (resp.status && resp.status.toString()[0] === '2')) {
         toast('Successfully Signed Up');
